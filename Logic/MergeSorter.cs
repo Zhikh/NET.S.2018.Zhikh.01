@@ -39,7 +39,9 @@
             }
 
             if (elements.Length == 1)
+            {
                 return elements;
+            }
 
             var middle = elements.Length / 2;
 

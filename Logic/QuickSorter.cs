@@ -23,44 +23,15 @@ namespace Logic
         }
 
         /// <summary>
-        /// This method sorts array of type T.
-        /// </summary>
-        /// <param name="array"> Unsorted array of type T </param>
-        /// <param name="endIndex"> Last index of subarray of parametr "array" </param>
-        /// <param name="startIndex"> First index of subarray of parametr "array" </param>
-        /// <exception> ArgumentNullException </exception>
-        private void QuickSort(T[] array, int endIndex, int startIndex = 0)
-        {
-            if (array == null)
-            {
-                throw new ArgumentNullException("Argument can't be null!");
-            }
-
-            int i, j;
-
-            SplitArray(array, endIndex, startIndex, out i, out j);
-
-            if (j > startIndex)
-            {
-                QuickSort(array, j, startIndex);
-            }
-
-            if (endIndex > i)
-            {
-                QuickSort(array, endIndex, i);
-            }
-        }
-
-        /// <summary>
         /// This method sorts array of type T by pivot element.
         /// </summary>
         /// <param name="array"> Unsorted array of type T </param>
-        /// <param name="endIndex"> Last index of subarray of parametr "array" </param>
-        /// <param name="startIndex"> First index of subarray of parametr "array" </param>
+        /// <param name="endIndex"> Last index of subarray </param>
+        /// <param name="startIndex"> First index of subarray </param>
         /// <param name="i"> Last index for left subarray </param>
         /// <param name="j"> First index for right subarray </param>
         /// <exception> ArgumentNullException </exception>
-        private static void SplitArray(T[] array, int endIndex, int startIndex, out int i, out int j)
+        private static void SplitArray(out int i, out int j, T[] array, int endIndex, int startIndex)
         {
             if (array == null)
             {
@@ -71,7 +42,7 @@ namespace Logic
 
             i = startIndex;
             j = endIndex;
-            
+
             do
             {
                 while (array[i].CompareTo(pivot) < 0)
@@ -91,16 +62,16 @@ namespace Logic
                     i++;
                     j--;
                 }
-
-            } while (i <= j);
+            }
+            while (i <= j);
         }
 
         /// <summary>
         /// This method swaps elements of array.
         /// </summary>
-        /// <param name="array"> Array for swaping </param>
-        /// <param name="i"> Index for swap </param>
-        /// <param name="j"> Index for swap </param>
+        /// <param name="array"> Array for exchange </param>
+        /// <param name="i"> Index for exchange </param>
+        /// <param name="j"> Index for exchange </param>
         /// <exception> ArgumentNullException </exception>
         private static T Swap(T[] array, int i, int j)
         {
@@ -116,6 +87,34 @@ namespace Logic
 
             return temp;
         }
+
+        /// <summary>
+        /// This method sorts array of type T.
+        /// </summary>
+        /// <param name="array"> Unsorted array of type T </param>
+        /// <param name="endIndex"> Last index of subarray </param>
+        /// <param name="startIndex"> First index of subarray </param>
+        /// <exception> ArgumentNullException </exception>
+        private void QuickSort(T[] array, int endIndex, int startIndex = 0)
+        {
+            if (array == null)
+            {
+                throw new ArgumentNullException("Argument can't be null!");
+            }
+
+            int i, j;
+
+            SplitArray(out i, out j, array, endIndex, startIndex);
+
+            if (j > startIndex)
+            {
+                QuickSort(array, j, startIndex);
+            }
+
+            if (endIndex > i)
+            {
+                QuickSort(array, endIndex, i);
+            }
+        }
     }
-    
 }
