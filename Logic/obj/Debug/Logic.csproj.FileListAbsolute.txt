@@ -1,0 +1,6 @@
+C:\Users\Zhikh Anastasya\Documents\NET.S.2018.Zhikh.01\Logic\bin\Debug\Logic.dll
+C:\Users\Zhikh Anastasya\Documents\NET.S.2018.Zhikh.01\Logic\bin\Debug\Logic.pdb
+C:\Users\Zhikh Anastasya\Documents\NET.S.2018.Zhikh.01\Logic\obj\Debug\Logic.csprojResolveAssemblyReference.cache
+C:\Users\Zhikh Anastasya\Documents\NET.S.2018.Zhikh.01\Logic\obj\Debug\Logic.csproj.CoreCompileInputs.cache
+C:\Users\Zhikh Anastasya\Documents\NET.S.2018.Zhikh.01\Logic\obj\Debug\Logic.dll
+C:\Users\Zhikh Anastasya\Documents\NET.S.2018.Zhikh.01\Logic\obj\Debug\Logic.pdb
