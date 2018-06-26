@@ -1,7 +1,7 @@
-﻿namespace Logic
-{
-    using System;
+﻿using System;
 
+namespace Logic
+{
     /// <summary>
     /// This interface is used for various types of sorting.
     /// </summary>

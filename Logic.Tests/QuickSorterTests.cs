@@ -23,7 +23,7 @@ namespace Logic.Tests
         public void Sort_StringArray_ReturnSortedArray()
         {
             string[] array = { "fgh", "a", "", "b", "fga", "" };
-            string[] expected = {"", "",  "a", "b", "fga", "fgh"};
+            string[] expected = { "", "",  "a", "b", "fga", "fgh"};
 
             var sorter = new QuickSorter<string>();
 

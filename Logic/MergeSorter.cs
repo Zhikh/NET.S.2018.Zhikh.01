@@ -1,13 +1,14 @@
-﻿namespace Logic
-{
-    using System;
-    using System.Linq;
+﻿using System;
+using System.Linq; 
 
+namespace Logic
+{
     /// <summary>
     /// This class imlements interface ISorter<T> for Merge sort.
     /// </summary>
     public class MergeSorter<T> : ISorter<T> where T : IComparable<T>
     {
+        #region Public Methods
         /// <summary>
         /// This method sorts array of type T using merge sort.
         /// </summary>
@@ -24,7 +25,9 @@
 
             sortedArray.CopyTo(elements, 0);
         }
+        #endregion
 
+        #region Private Methods
         /// <summary>
         /// This method spits array, sorts its parts and merges them.
         /// </summary>
@@ -99,5 +102,6 @@
 
             return result;
         }
+        #endregion
     }
 }

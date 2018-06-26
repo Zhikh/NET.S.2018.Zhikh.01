@@ -2,6 +2,7 @@
 
 namespace Logic
 {
+    #region Public Methods
     /// <summary>
     /// This class imlements interface ISorter<T> for QuickSort.
     /// </summary>
@@ -21,7 +22,9 @@ namespace Logic
             
             QuickSort(elements, elements.Length - 1);
         }
+        #endregion
 
+        #region Private Methods
         /// <summary>
         /// This method sorts array of type T by pivot element.
         /// </summary>
@@ -31,11 +34,22 @@ namespace Logic
         /// <param name="i"> Last index for left subarray </param>
         /// <param name="j"> First index for right subarray </param>
         /// <exception> ArgumentNullException </exception>
+        /// <exception> ArgumentOutOfRangeException </exception>
         private static void SplitArray(out int i, out int j, T[] array, int endIndex, int startIndex)
         {
             if (array == null)
             {
                 throw new ArgumentNullException("Argument can't be null!");
+            }
+
+            if ((startIndex < 0) || (startIndex >= array.Length))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            if ((endIndex < 0) || (endIndex >= array.Length))
+            {
+                throw new ArgumentOutOfRangeException();
             }
 
             T pivot = array[(endIndex + startIndex) / 2];
@@ -95,11 +109,22 @@ namespace Logic
         /// <param name="endIndex"> Last index of subarray </param>
         /// <param name="startIndex"> First index of subarray </param>
         /// <exception> ArgumentNullException </exception>
+        /// <exception> ArgumentOutOfRangeException </exception>
         private void QuickSort(T[] array, int endIndex, int startIndex = 0)
         {
             if (array == null)
             {
                 throw new ArgumentNullException("Argument can't be null!");
+            }
+
+            if ((startIndex < 0) || (startIndex >= array.Length))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            if ((endIndex < 0) || (endIndex >= array.Length))
+            {
+                throw new ArgumentOutOfRangeException();
             }
 
             int i, j;
@@ -116,5 +141,6 @@ namespace Logic
                 QuickSort(array, endIndex, i);
             }
         }
+        #endregion
     }
 }
