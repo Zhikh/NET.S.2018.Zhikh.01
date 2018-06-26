@@ -9,27 +9,43 @@
     public class MergeSorter<T> : ISorter<T> where T : IComparable<T>
     {
         /// <summary>
-        /// This method separates and sorts arrays of type T.
+        /// This method sorts array of type T using merge sort.
         /// </summary>
         /// <param name="array"> Unsorted array of type T </param>
-        /// <returns> Sorted array </returns>
-        public T[] Sort(T[] elements)
+        /// <exception> ArgumentNullException </exception>
+        public void Sort(T[] elements)
         {
             if (elements == null)
             {
-                throw new ArgumentException("Argument can't be null!");
+                throw new ArgumentNullException("Argument can't be null!");
+            }
+
+            var sortedArray = SplitArray(elements);
+
+            sortedArray.CopyTo(elements, 0);
+        }
+
+        /// <summary>
+        /// This method spits array, sorts its parts and merges them.
+        /// </summary>
+        /// <param name="array"> Unsorted array of type T </param>
+        /// <returns> Merged array </returns>
+        /// <exception> ArgumentNullException </exception>
+        private T[] SplitArray(T[] elements)
+        {
+            if (elements == null)
+            {
+                throw new ArgumentNullException("Argument can't be null!");
             }
 
             if (elements.Length == 1)
-            {
                 return elements;
-            }
 
             var middle = elements.Length / 2;
 
             // partitioning array to the smallest parts
             // sort these parts and merge it
-            return this.MergeSort(Sort(elements.Take(middle).ToArray()), Sort(elements.Skip(middle).ToArray()));
+            return MergeSort(SplitArray(elements.Take(middle).ToArray()), SplitArray(elements.Skip(middle).ToArray()));
         }
 
         /// <summary>
@@ -38,11 +54,12 @@
         /// <param name="leftPart"> Left part of array </param>
         /// <param name="rightPart"> Right part of array </param>
         /// <returns> Merged array </returns>
+        /// <exception> ArgumentNullException </exception>
         private T[] MergeSort(T[] leftPart, T[] rightPart)
         {
             if (leftPart == null || rightPart == null)
             {
-                throw new ArgumentException("Argument can't be null!");
+                throw new ArgumentNullException("Argument can't be null!");
             }
 
             var length = leftPart.Length + rightPart.Length;
@@ -57,16 +74,24 @@
                 if (j == leftPart.Length || k == rightPart.Length)
                 {
                     if (j == leftPart.Length)
+                    {
                         result[i] = rightPart[k++];
+                    }
                     else
+                    {
                         result[i] = leftPart[j++];
+                    }
                 }
                 else
                 {
                     if (leftPart[j].CompareTo(rightPart[k]) > 0)
+                    {
                         result[i] = rightPart[k++];
+                    }
                     else
+                    {
                         result[i] = leftPart[j++];
+                    }
                 }
             }
 

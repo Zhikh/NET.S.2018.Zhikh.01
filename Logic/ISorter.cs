@@ -11,7 +11,6 @@
         /// This method sorts array of type T.
         /// </summary>
         /// <param name="array"> Unsorted array of type T </param>
-        /// <returns> Sorted array </returns>
-        T[] Sort(T[] array);
+        void Sort(T[] array);
     }
 }
