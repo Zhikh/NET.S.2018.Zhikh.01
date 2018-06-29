@@ -21,6 +21,7 @@ namespace Logic.Tests
         public void Sort_IntArray_ReturnSortedArray()
         {
             int[] array = { 1, 6, 45, 6, 5, 35 };
+
             int[] expected = { 1, 5, 6, 6, 35, 45 };
 
             var sorter = new MergeSorter<int>();
@@ -28,6 +29,14 @@ namespace Logic.Tests
             sorter.Sort(array);
 
             CollectionAssert.AreEqual(array, expected);
+        }
+
+        [TestMethod]
+        public void Sort_BigAmountOfNumbers_ReturnSortedArray()
+        {
+            ISorter<int> sorter = new MergeSorter<int>();
+
+            SortChecker.CheckSort(sorter);
         }
     }
 }

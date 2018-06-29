@@ -42,5 +42,13 @@ namespace Logic.Tests
 
             sorter.Sort(array);
         }
+
+        [TestMethod]
+        public void Sort_BigAmountOfNumbers_ReturnSortedArray()
+        {
+            ISorter<int> sorter = new QuickSorter<int>();
+
+            SortChecker.CheckSort(sorter);
+        }
     }
 }
