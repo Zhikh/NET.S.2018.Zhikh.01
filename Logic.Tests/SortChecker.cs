@@ -1,38 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Logic.Tests
 {
     public static class SortChecker
     {
-        /// <summary>
-        /// This method generates random int values.
-        /// </summary>
-        private static int[] GenerateIntValues(int n, int range)
-        {
-            var result = new int[n];
-            var rng = new Random(range);
-
-            for (int i = 0; i < n; ++i)
-            {
-                result[i] = rng.Next();
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// This method is for checking work of sort.
-        /// </summary>
-        private static void SortArrays<T>(ISorter<T> sorter, T[] array, T[] expected) where T : IComparable<T>
-        {
-            array.CopyTo(expected, 0);
-
-            Array.Sort(expected);
-
-            sorter.Sort(array);
-        }
-
+        #region Public methods
         /// <summary>
         /// This method is for checking work of sort.
         /// </summary>
@@ -59,5 +32,36 @@ namespace Logic.Tests
                 CollectionAssert.AreEqual(array, expected);
             }
         }
+        #endregion
+
+        #region Private methods
+        /// <summary>
+        /// This method generates random integer values.
+        /// </summary>
+        private static int[] GenerateIntValues(int n, int range)
+        {
+            var result = new int[n];
+            var rng = new Random(range);
+
+            for (int i = 0; i < n; ++i)
+            {
+                result[i] = rng.Next();
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// This method is for checking work of sort.
+        /// </summary>
+        private static void SortArrays<T>(ISorter<T> sorter, T[] array, T[] expected) where T : IComparable<T>
+        {
+            array.CopyTo(expected, 0);
+
+            Array.Sort(expected);
+
+            sorter.Sort(array);
+        }
+        #endregion
     }
 }
