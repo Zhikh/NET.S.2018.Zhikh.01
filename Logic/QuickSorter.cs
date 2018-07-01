@@ -2,12 +2,13 @@
 
 namespace Logic
 {
-    #region Public Methods
+    
     /// <summary>
     /// This class imlements interface ISorter<T> for QuickSort.
     /// </summary>
     public class QuickSorter<T> : ISorter<T> where T : IComparable<T>
     {
+        #region Public Methods
         /// <summary>
         /// This method sorts array of type T.
         /// </summary>
