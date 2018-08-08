@@ -2,7 +2,6 @@
 
 namespace Logic
 {
-    
     /// <summary>
     /// This class imlements interface ISorter<T> for QuickSort.
     /// </summary>
@@ -26,16 +25,6 @@ namespace Logic
         #endregion
 
         #region Private Methods
-        /// <summary>
-        /// This method sorts array of type T by pivot element.
-        /// </summary>
-        /// <param name="array"> Unsorted array of type T </param>
-        /// <param name="endIndex"> Last index of subarray </param>
-        /// <param name="startIndex"> First index of subarray </param>
-        /// <param name="i"> Last index for left subarray </param>
-        /// <param name="j"> First index for right subarray </param>
-        /// <exception> ArgumentNullException </exception>
-        /// <exception> ArgumentOutOfRangeException </exception>
         private static void SplitArray(out int i, out int j, T[] array, int endIndex, int startIndex)
         {
             if (array == null)
@@ -72,7 +61,7 @@ namespace Logic
 
                 if (i <= j)
                 {
-                    Swap(array, i, j);
+                    Swap(ref array[i], ref array[j]);
 
                     i++;
                     j--;
@@ -81,36 +70,14 @@ namespace Logic
             while (i <= j);
         }
 
-        /// <summary>
-        /// This method swaps elements of array.
-        /// </summary>
-        /// <param name="array"> Array for exchange </param>
-        /// <param name="i"> Index for exchange </param>
-        /// <param name="j"> Index for exchange </param>
-        /// <exception> ArgumentNullException </exception>
-        private static T Swap(T[] array, int i, int j)
+        private static void Swap<T>(ref T first, ref T second)
         {
-            if (array == null)
-            {
-                throw new ArgumentNullException("Argument can't be null!");
-            }
+            T temp = first;
 
-            T temp = array[i];
-
-            array[i] = array[j];
-            array[j] = temp;
-
-            return temp;
+            first = second;
+            second = first;
         }
-
-        /// <summary>
-        /// This method sorts array of type T.
-        /// </summary>
-        /// <param name="array"> Unsorted array of type T </param>
-        /// <param name="endIndex"> Last index of subarray </param>
-        /// <param name="startIndex"> First index of subarray </param>
-        /// <exception> ArgumentNullException </exception>
-        /// <exception> ArgumentOutOfRangeException </exception>
+        
         private void QuickSort(T[] array, int endIndex, int startIndex = 0)
         {
             if (array == null)

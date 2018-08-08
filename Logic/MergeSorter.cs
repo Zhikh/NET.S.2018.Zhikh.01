@@ -28,12 +28,6 @@ namespace Logic
         #endregion
 
         #region Private Methods
-        /// <summary>
-        /// This method spits array, sorts its parts and merges them.
-        /// </summary>
-        /// <param name="array"> Unsorted array of type T </param>
-        /// <returns> Merged array </returns>
-        /// <exception> ArgumentNullException </exception>
         private T[] SplitArray(T[] elements)
         {
             if (elements == null)
@@ -52,14 +46,7 @@ namespace Logic
             // sort these parts and merge it
             return MergeSort(SplitArray(elements.Take(middle).ToArray()), SplitArray(elements.Skip(middle).ToArray()));
         }
-
-        /// <summary>
-        /// This method merges array with sorting its elements between each.
-        /// </summary>
-        /// <param name="leftPart"> Left part of array </param>
-        /// <param name="rightPart"> Right part of array </param>
-        /// <returns> Merged array </returns>
-        /// <exception> ArgumentNullException </exception>
+        
         private T[] MergeSort(T[] leftPart, T[] rightPart)
         {
             if (leftPart == null || rightPart == null)
